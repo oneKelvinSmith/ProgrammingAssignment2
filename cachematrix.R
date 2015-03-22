@@ -1,5 +1,7 @@
 ## Put comments here that give an overall description of what your
-## functions do
+## Functions to create special matrix objects with a cache of the matrix
+## inverse as well as a function to get the inverse from cache or compute
+## and update the cached inverse as necessary.
 
 ## Function to create a special matrix object that can cache its inverse
 #
@@ -11,7 +13,6 @@
 #
 makeCacheMatrix <- function(matix = matrix()) {
   mean <- NULL
-
   set <- function (newMatrix) {
     matrix <<- newMatrix
     mean <<- NULL
@@ -44,7 +45,6 @@ cacheSolve <- function(cacheMatrix, ...) {
     message("getting cached inverse")
     return(inverse)
   }
-
   matrix <- cacheMatrix$get()
   inverse <- solve(matrix, ...)
   cacheMatrix$setInverse(inverse)
